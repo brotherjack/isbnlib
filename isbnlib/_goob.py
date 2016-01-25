@@ -27,9 +27,8 @@ def _mapper(isbn, records):
         canonical['Publisher'] = records.get('publisher', u(''))
         canonical['Pages'] = unicode(records.get('pageCount', u('')))
         canonical['Format'] = records.get('printType', u(''))
-        if 'publishedDate' in records \
-           and len(records['publishedDate']) >= 4:
-            canonical['Year'] = records['publishedDate'][0:4]
+        if 'publishedDate' in records:
+            canonical['Year'] = records['publishedDate']
         else:  # pragma: no cover
             canonical['Year'] = u('')
         canonical['Language'] = records.get('language', u(''))
